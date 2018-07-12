@@ -73,9 +73,9 @@ def get_event_by_joined():
     cur = event.find_one({'users_joined' : int(float(user_id))})
     return dumps(cur)
 
-@app.route('/get_user', methods=['GET'])
+@app.route('/get_user', methods=['POST'])
 def get_user():
-    user_id = request.args.get('user_id')
+    user_id = request.form['user_id']
     user = mongo.db.users
     cur = user.find({'user_id' : user_id})
     return dumps(cur)
